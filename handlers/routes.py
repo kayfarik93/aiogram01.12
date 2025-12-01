@@ -12,6 +12,7 @@ import os
 load_dotenv()
 
 ADMIN_ID = int(os.getenv("ADMIN_ID", "0"))
+API_URL = os.getenv("API_URL").rstrip("/")
 
 router = Router()
 
@@ -311,7 +312,7 @@ async def confirm_order(callback: CallbackQuery, state: FSMContext):
             "amount": total_cents,
             "order_id": f"order_{result}_{uuid.uuid4().hex[:6]}",
             "order_desc": "Оплата заказа в Telegram",
-            "server_callback_url": "https://your-api.com/webhook/fondy"
+            "server_callback_url": f"{API_URL}/webhook/fondy"
         }
         url = checkout.url(data).get("checkout_url")
 
