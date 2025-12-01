@@ -1,6 +1,6 @@
 import asyncio
 import logging
-import os
+
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
@@ -9,8 +9,9 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.exceptions import TelegramAPIError
 from project.middleware.admin_only import AdminOnlyMiddleware
 from project.middleware.rate_limit import RateLimitMiddleware
-from dotenv import load_dotenv
 from project.handlers import routes
+from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
@@ -34,11 +35,9 @@ async def main() -> None:
 
     await bot.set_my_commands([
         BotCommand(command="start", description="Старт работы"),
-        BotCommand(command="add", description="Добавить нового пользователя (alias /start)"),
-        BotCommand(command="users", description="Показать всех пользователей"),
-        BotCommand(command="get", description="Найти пользователя по ID"),
-        BotCommand(command="update", description="Обновить данные пользователя"),
-        BotCommand(command="delete", description="Удалить пользователя по ID"),
+        BotCommand(command="cart", description="Корзина товаров"),
+        BotCommand(command="help", description="Проблемы с ботом"),
+        BotCommand(command="help_admin", description="Для администраторов")
     ])
 
     try:

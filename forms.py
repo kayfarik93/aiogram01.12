@@ -1,19 +1,10 @@
 from aiogram.fsm.state import StatesGroup, State
 
-class RegisterUser(StatesGroup):
-    name = State()
-    email = State()
+class ProductSearch(StatesGroup):
+    title = State()
 
-
-class UpdateUser(StatesGroup):
-    id = State()
-    name = State()
-    email = State()
-
-
-class GetUser(StatesGroup):
-    id = State()
-
-
-class DeleteUser(StatesGroup):
-    id = State()
+class AdminAddProduct(StatesGroup):
+    title = State()
+    desc = State()
+    price = State()
+    image_url = State()
